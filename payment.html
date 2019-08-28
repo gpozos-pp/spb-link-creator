@@ -8,16 +8,28 @@
 </head>
 
 <body>
-    <!-- Set up a container element for the button -->
+  <script src="https://www.paypal.com/sdk/js?currency=USD&client-id=<INSERTE-CLIENT-ID>"></script>
     <br><br>
-    <h2>Amount to pay: <span id="amt"></span> USD</h2>
+   <h2 style="text-align: center">Amount to pay: <span id="amt"></span> USD</h2>
     <br><br>
-    <div id="paypal-button-container"></div>
+   <div style="text-align: center" ><input type="checkbox" id="checkme" onclick="showMe('paypal-button-container')"/>Accept terms and conditions to continue. </div> 
+    <br><br>
+
+    <div style="text-align: center; display:none" id="paypal-button-container"></div>
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?currency=USD&client-id=<INSERTE-CLIENT-ID>"></script>
-
+    
     <script>
+
+       function showMe (box) {
+        
+          var chbox = document.getElementById("checkme");
+          var vis = "none";
+          if(chbox.checked){
+             vis = "block"
+          }
+          document.getElementById(box).style.display = vis;        
+        }
 
         function getQueryVariable(variable){
             var query = window.location.search.substring(1);
